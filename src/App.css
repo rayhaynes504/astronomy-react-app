@@ -4,11 +4,17 @@
 .entire-page {
 	background-color: rgba(17, 4, 29, 0.612);
 }
+a {
+	/* color: inherit;
+	text-decoration: inherit; */
+	all:unset;
+}
 /* Nav Component Styling */
 .nav-container {
 	list-style: none;
 	display: flex;
 	justify-content: center;
+	padding: 0;
 }
 .nav-link {
 	font-size: 1.2rem;

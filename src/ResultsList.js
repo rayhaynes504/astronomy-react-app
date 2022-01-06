@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import picturesList from './random-count-data.json';
 
 function ResultsList(props) {
@@ -8,7 +9,7 @@ function ResultsList(props) {
 			<div className='results-page'>
 				{picturesList.map((picture, index) => {
 					return (
-						<div className='picture-container'>
+						<Link to={'/detailresult'} className='picture-container'>
 							{console.log(picture)}
 							<img src={picture.url} alt={picture.title} />
 							<p>Picture Date: {picture.date}</p>
@@ -16,7 +17,7 @@ function ResultsList(props) {
 								Photo Credit:{' '}
 								{picture.copyright ? picture.copyright : 'Unknown'}
 							</p>
-						</div>
+						</Link>
 					);
 				})}
 			</div>
