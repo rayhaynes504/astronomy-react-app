@@ -16,8 +16,13 @@
 main {
 	margin: 0 auto;
 }
+/* Search Component Styling */
 .search-container {
 	text-align: center;
+}
+.search-container form button {
+	display: block;
+	margin: 1rem auto;
 }
 /* Results Component Styling */
 .results-header {

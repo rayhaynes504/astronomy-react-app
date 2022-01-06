@@ -33,9 +33,9 @@ function App() {
 		<div className='entire-page'>
 			<Nav />
 			<main>
-				{/* <Search /> */}
-				<ResultsList />
-        {/* <DetailResult/> */}
+				<Search />
+				{/* <ResultsList /> */}
+				{/* <DetailResult /> */}
 			</main>
 		</div>
 	);
