@@ -6,6 +6,8 @@ import Search from './Search';
 import ResultsList from './ResultsList';
 import DetailResult from './DetailResult';
 import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
+import { FormContext } from './FormContext';
 
 function App() {
 	// Different URL formats for searches
@@ -30,15 +32,29 @@ function App() {
 
 	// testApi()
 
+	const [specificDateValue, setSpecificDateValue] = useState('');
+	const [fromDateValue, setFromDateValue] = useState('');
+	const [toDateValue, setToDateValue] = useState('');
+
 	return (
 		<div className='entire-page'>
 			<Nav />
 			<main>
-				<Routes>
-					<Route path='/search' element={<Search />} />
-					<Route path='/resultslist' element={<ResultsList />} />
-					<Route path='/detailresult' element={<DetailResult />} />
-				</Routes>
+				<FormContext.Provider
+					value={{
+						specificDateValue,
+						setSpecificDateValue,
+						fromDateValue,
+						setFromDateValue,
+						toDateValue,
+						setToDateValue,
+					}}>
+					<Routes>
+						<Route path='/search' element={<Search />} />
+						<Route path='/resultslist' element={<ResultsList />} />
+						<Route path='/:date' element={<DetailResult />} />
+					</Routes>
+				</FormContext.Provider>
 			</main>
 		</div>
 	);

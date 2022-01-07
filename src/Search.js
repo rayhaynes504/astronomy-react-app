@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { FormContext } from './FormContext';
 
 function Search(props) {
-	const [specificDateValue, setSpecificDateValue] = useState('');
-	const [fromDateValue, setFromDateValue] = useState('');
-	const [toDateValue, setToDateValue] = useState('');
+	const {
+		specificDateValue,
+		setSpecificDateValue,
+		fromDateValue,
+		setFromDateValue,
+		toDateValue,
+		setToDateValue,
+	} = useContext(FormContext);
 
 	const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${fromDateValue}&end_date=${toDateValue}}`;
 
@@ -43,7 +49,7 @@ function Search(props) {
 				<input id='from-date' type='date' min='1995-06-16' />
 				<label htmlFor='to-date'>To:</label>
 				<input id='to-date' type='date' />
-				<Link to={specificDateValue ? '/detailresult' : '/resultslist'}>
+				<Link to={specificDateValue ? `/${specificDateValue}` : '/resultslist'}>
 					<button>Search!</button>
 				</Link>
 			</form>
