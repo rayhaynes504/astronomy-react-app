@@ -6,7 +6,7 @@ import picturesList from './random-count-data.json';
 function ResultsList(props) {
 	const [rangeData, setRangeData] = useState(null);
 	const { endDate, startDate } = useParams();
-	const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}&thumbs=False`;
+	const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}`;
 
 	function getRangeData() {
 		fetch(dateRangeUrl)
