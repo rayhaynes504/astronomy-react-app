@@ -1,13 +1,13 @@
-* {
+/* * {
 	border: 1px solid red;
-}
+} */
 .entire-page {
 	background-color: rgba(17, 4, 29, 0.612);
 }
 a {
-	/* color: inherit;
-	text-decoration: inherit; */
-	all:unset;
+	color: inherit;
+	/* text-decoration: inherit; */
+	/* all:unset; */
 }
 /* Nav Component Styling */
 .nav-container {
@@ -71,4 +71,8 @@ main {
 .detail-result-container .description-header {
 	text-align: center;
 	margin-bottom: 0.1rem;
+}
+.description-p {
+	margin: 1rem auto;
+	width: 94%;
 }

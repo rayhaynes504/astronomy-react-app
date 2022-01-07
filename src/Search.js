@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormContext } from './FormContext';
 
 function Search(props) {
@@ -11,47 +11,76 @@ function Search(props) {
 		toDateValue,
 		setToDateValue,
 	} = useContext(FormContext);
+	const navigate = useNavigate();
 
-	const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${fromDateValue}&end_date=${toDateValue}}`;
+	// to set values to empty when returning to this page from a  result page
+	useEffect(() => {
+		setSpecificDateValue('');
+		setFromDateValue('');
+		setToDateValue('');
+		//eslint-disable-next-line
+	}, []);
 
-	function grabInputValue(event) {
+	//return in useEffect to cleanup remaining values in input form
+
+	// const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${fromDateValue}&end_date=${toDateValue}}`;
+
+	// function grabInputValue(event) {
+	// 	event.preventDefault();
+	// 	if (event.target[0].value) {
+	// 		console.log(specificDateValue);
+	// 	}
+	// 	if (event.target[1].value && event.target[2].value) {
+	// 		console.log(fromDateValue, toDateValue);
+	// 		console.log(dateRangeUrl);
+	// 	}
+	// }
+
+	
+
+	function handleSubmit(event) {
 		event.preventDefault();
-		if (event.target[0].value) {
-			console.log(specificDateValue);
-		}
-		if (event.target[1].value && event.target[2].value) {
-			console.log(fromDateValue, toDateValue);
-			console.log(dateRangeUrl);
-		}
-	}
-
-	function changeHandler(event) {
-		if (event.target.id === 'date-box') {
-			setSpecificDateValue(event.target.value);
-		}
-		if (event.target.id === 'from-date') {
-			setFromDateValue(event.target.value);
-		}
-		if (event.target.id === 'to-date') {
-			setToDateValue(event.target.value);
+		if (specificDateValue) {
+			navigate(`/${specificDateValue}`);
+		} else if (fromDateValue & toDateValue){
+			navigate(`/resultslist/from${fromDateValue}/to${toDateValue}`);
 		}
 	}
 
 	return (
 		<div className='search-container'>
 			<h1>Search For Your Images</h1>
-			<form onSubmit={grabInputValue} onChange={changeHandler}>
+			<form onSubmit={handleSubmit}>
 				<label htmlFor='date-box'>Search specific date:</label>
-				<input id='date-box' type='date' min='1995-06-16' />
+				<input
+					id='date-box'
+					type='date'
+					min='1995-06-16'
+					onChange={(event) => {
+						setSpecificDateValue(event.target.value);
+					}}
+				/>
 				{/* <button>Search!</button> */}
 				<p>Or date range</p>
 				<label htmlFor='from-date'>From:</label>
-				<input id='from-date' type='date' min='1995-06-16' />
+				<input
+					id='from-date'
+					type='date'
+					min='1995-06-16'
+					onChange={(event) => {
+						setFromDateValue(event.target.value);
+					}}
+				/>
 				<label htmlFor='to-date'>To:</label>
-				<input id='to-date' type='date' />
-				<Link to={specificDateValue ? `/${specificDateValue}` : '/resultslist'}>
-					<button>Search!</button>
-				</Link>
+				<input
+					id='to-date'
+					type='date'
+					onChange={(event) => {
+						setToDateValue(event.target.value);
+					}}
+				/>
+
+				<button type='submit'>Search!</button>
 			</form>
 		</div>
 	);

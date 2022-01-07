@@ -6,7 +6,7 @@ import Search from './Search';
 import ResultsList from './ResultsList';
 import DetailResult from './DetailResult';
 import { Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FormContext } from './FormContext';
 
 function App() {
@@ -17,8 +17,7 @@ function App() {
 
 	// const randomCountUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY&count=${countValue}}`;
 
-	// console.log(singlePicture);
-	// console.log(picturesList);
+	
 
 	// Test Fetch
 	// function testApi() {
@@ -31,10 +30,26 @@ function App() {
 	// }
 
 	// testApi()
+	
+		const [specificDateValue, setSpecificDateValue] = useState('');
+		const [fromDateValue, setFromDateValue] = useState('');
+		const [toDateValue, setToDateValue] = useState('');
 
-	const [specificDateValue, setSpecificDateValue] = useState('');
-	const [fromDateValue, setFromDateValue] = useState('');
-	const [toDateValue, setToDateValue] = useState('');
+
+		// FETCH CALL UPDATE
+	// useEffect(() => {
+	// 	fetchApi()
+	// }, [])
+
+	// const fetchApi = () => {	
+	// const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${specificDateValue}`;
+
+	// fetch(specificDateUrl)
+	// .then(res => res.json())
+	// .then(res => {
+	// 	console.log(res)
+	// })
+	// }
 
 	return (
 		<div className='entire-page'>
@@ -50,8 +65,8 @@ function App() {
 						setToDateValue,
 					}}>
 					<Routes>
-						<Route path='/search' element={<Search />} />
-						<Route path='/resultslist' element={<ResultsList />} />
+						<Route path='/' element={<Search />} />
+						<Route path='/resultslist/from:startDate/to:endDate' element={<ResultsList />} />
 						<Route path='/:date' element={<DetailResult />} />
 					</Routes>
 				</FormContext.Provider>
