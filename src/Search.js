@@ -36,13 +36,11 @@ function Search(props) {
 	// 	}
 	// }
 
-	
-
 	function handleSubmit(event) {
 		event.preventDefault();
 		if (specificDateValue) {
 			navigate(`/${specificDateValue}`);
-		} else if (fromDateValue & toDateValue){
+		} else if (fromDateValue && toDateValue) {
 			navigate(`/resultslist/from${fromDateValue}/to${toDateValue}`);
 		}
 	}
