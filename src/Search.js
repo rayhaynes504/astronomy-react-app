@@ -1,6 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import DetailResult from './DetailResult';
 import { FormContext } from './FormContext';
+import TodayResult from './TodayResult';
+import singlePicture from './today-response-data.json'
 
 function Search(props) {
 	const {
@@ -12,18 +15,30 @@ function Search(props) {
 		setToDateValue,
 	} = useContext(FormContext);
 	const navigate = useNavigate();
+	const [todayData, setTodayData] = useState(null)
 
 	// to set values to empty when returning to this page from a  result page
 	useEffect(() => {
-		setSpecificDateValue('');
-		setFromDateValue('');
-		setToDateValue('');
+		fetchTodayData()
+		return () => {
+
+			setSpecificDateValue('');
+			setFromDateValue('');
+			setToDateValue('');
+		}
 		//eslint-disable-next-line
 	}, []);
 
 	//return in useEffect to cleanup remaining values in input form
 
-	// const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${fromDateValue}&end_date=${toDateValue}}`;
+	const todayUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}`;
+
+	function fetchTodayData () {
+		fetch(todayUrl)
+		.then((res) => res.json())
+		.then((json) => {console.log(json); setTodayData(json)})
+		.catch(console.error)
+	}
 
 	// function grabInputValue(event) {
 	// 	event.preventDefault();
@@ -41,7 +56,7 @@ function Search(props) {
 		if (specificDateValue) {
 			navigate(`/${specificDateValue}`);
 		} else if (fromDateValue && toDateValue) {
-			navigate(`/resultslist/from${fromDateValue}/to${toDateValue}`);
+			navigate(`/resultslist/${fromDateValue}/${toDateValue}`);
 		}
 	}
 
@@ -80,6 +95,7 @@ function Search(props) {
 
 				<button type='submit'>Search!</button>
 			</form>
+			<TodayResult todayData={todayData}/>
 		</div>
 	);
 }
