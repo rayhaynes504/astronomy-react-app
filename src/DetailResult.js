@@ -20,7 +20,7 @@ function DetailResult(props) {
 		getSpecificData();
 	}, []);
 
-	const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`;
+	const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}&thumbs=True`;
 
 	function getSpecificData() {
 		fetch(specificDateUrl)
@@ -42,7 +42,14 @@ function DetailResult(props) {
 		<div className='detail-result-container'>
 			{console.log(singlePicture)}
 			<h1 className='detail-result-picture-title'>{singlePicture.title}</h1>
-			<img src={singlePicture.hdurl} alt={singlePicture.title} />
+			<img
+				src={
+					singlePicture.media_type === 'video'
+						? singlePicture.thumbnail_url
+						: singlePicture.hdurl
+				}
+				alt={singlePicture.title}
+			/>
 			<div className='detail-result-text-container'>
 				<h4>Picture Date: {singlePicture.date}</h4>
 				<h4>
@@ -50,6 +57,11 @@ function DetailResult(props) {
 					Photo Credit:{' '}
 					{singlePicture.copyright ? singlePicture.copyright : 'Unknown'}
 				</h4>
+				{singlePicture.media_type === 'video' && (
+					<h4 className='detail-result-video-link'>
+						Video Link: <a href={singlePicture.url}>Click Here</a>
+					</h4>
+				)}
 			</div>
 			<h4 className='description-header'>Description</h4>
 			<p className='description-p'>{singlePicture.explanation}</p>

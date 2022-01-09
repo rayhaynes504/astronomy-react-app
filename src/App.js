@@ -66,7 +66,7 @@ function App() {
 					}}>
 					<Routes>
 						<Route path='/' element={<Search />} />
-						<Route path='/resultslist/from:startDate/to:endDate' element={<ResultsList />} />
+						<Route path='/resultslist/:startDate/:endDate' element={<ResultsList />} />
 						<Route path='/:date' element={<DetailResult />} />
 					</Routes>
 				</FormContext.Provider>

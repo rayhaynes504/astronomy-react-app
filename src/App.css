@@ -1,8 +1,9 @@
-/* * {
-	border: 1px solid red;
-} */
+* {
+	/* border: 1px solid red; */
+	font-family: 'Source Code Pro', monospace;
+}
 .entire-page {
-	background-color: rgba(17, 4, 29, 0.612);
+	background-color: rgba(23, 13, 58, 0.612);
 }
 a {
 	color: inherit;
@@ -26,9 +27,29 @@ main {
 .search-container {
 	text-align: center;
 }
+.search-container form p {
+	font-weight: 700;
+}
 .search-container form button {
 	display: block;
 	margin: 1rem auto;
+}
+/* Today Result Component Styling */
+.today-data-container {
+	width: 95%;
+	margin: 0 auto;
+	border: 10px double black;
+	border-radius: 1rem;
+}
+.today-data-container img {
+	width: 100%;
+}
+.today-data-text-container h5 {
+	margin: 0 0.25rem;
+	text-align: end;
+}
+.today-data-text-container .today-description-header {
+	margin: 0.5rem;
 }
 /* Results Component Styling */
 .results-header {
@@ -43,6 +64,8 @@ main {
 }
 .picture-container {
 	background-color: rgba(142, 159, 199, 0.598);
+	border: 2px double rgba(208, 211, 225, 0.317);
+	/* border-radius: 1rem; */
 }
 .picture-container img {
 	width: 100%;
@@ -52,6 +75,8 @@ main {
 .detail-result-container {
 	display: flex;
 	flex-direction: column;
+	border: 10px double black;
+	border-radius: 1rem;
 }
 .detail-result-container h1 {
 	text-align: center;
@@ -64,9 +89,14 @@ main {
 .detail-result-text-container {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 0 2rem;
 }
 .detail-result-text-container h4 {
 	margin: 1rem 1rem;
+}
+.detail-result-text-container .detail-result-video-link {
+	display: block;
 }
 .detail-result-container .description-header {
 	text-align: center;
