@@ -16,7 +16,7 @@ function TodayResult({ todayData }) {
 				alt={todayData.title}
 			/>
 			<div className='today-data-text-container'>
-				<h5>Photo Credit: {todayData.copyright}</h5>
+				<h5>Photo Credit: {todayData.copyright ? todayData.copyright : 'Unknown'}</h5>
 				<h4 className='today-description-header'>Description</h4>
 				<p className='today-description-p'>{todayData.explanation}</p>
 			</div>

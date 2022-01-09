@@ -46,11 +46,13 @@ function ResultsList(props) {
 								}
 								alt={picture.title}
 							/>
-							<p>Picture Date: {picture.date}</p>
-							<p>
-								Photo Credit:{' '}
-								{picture.copyright ? picture.copyright : 'Unknown'}
-							</p>
+							<div className='results-text-container'>
+								<p>Picture Date: {picture.date}</p>
+								<p>
+									Photo Credit:{' '}
+									{picture.copyright ? picture.copyright : 'Unknown'}
+								</p>
+							</div>
 						</Link>
 					);
 				})}

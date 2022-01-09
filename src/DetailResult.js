@@ -47,7 +47,6 @@ function DetailResult(props) {
 			<div className='detail-result-text-container'>
 				<h4>Picture Date: {singlePicture.date}</h4>
 				<h4>
-					{' '}
 					Photo Credit:{' '}
 					{singlePicture.copyright ? singlePicture.copyright : 'Unknown'}
 				</h4>
