@@ -35,7 +35,7 @@ function ResultsList(props) {
 				{picturesList.map((picture, index) => {
 					return (
 						<Link
-							to={`/${picture.date}`}
+							to={`/detailresult/${picture.date}`}
 							key={picture.date}
 							className='picture-container'>
 							<img
