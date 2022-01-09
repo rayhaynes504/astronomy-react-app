@@ -1,23 +1,17 @@
+// Functionality imports
 import React, { useEffect, useState } from 'react';
-import singlePicture from './today-response-data.json';
-import { FormContext } from './FormContext';
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
+// Hard coded data file. Keeping for future updates
+// import singlePicture from './today-response-data.json';
+
 function DetailResult(props) {
-	const {
-		specificDateValue,
-		setSpecificDateValue,
-		fromDateValue,
-		setFromDateValue,
-		toDateValue,
-		setToDateValue,
-	} = useContext(FormContext);
 	const [specificData, setSpecificData] = useState(null);
 	const { date } = useParams();
 
 	useEffect(() => {
 		getSpecificData();
+		//eslint-disable-next-line
 	}, []);
 
 	const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}&thumbs=True`;

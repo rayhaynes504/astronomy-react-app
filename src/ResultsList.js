@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+// Functionality imports
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
-import picturesList from './random-count-data.json';
+// Hardcoded data. Leaving in for future revisions
+// import picturesList from './random-count-data.json';
 
 function ResultsList(props) {
 	const [rangeData, setRangeData] = useState(null);
@@ -20,7 +21,7 @@ function ResultsList(props) {
 		//eslint-disable-next-line
 	}, []);
 
-	console.log(rangeData)
+	console.log(rangeData);
 
 	if (!rangeData) return <p>Loading data...</p>;
 
@@ -37,8 +38,14 @@ function ResultsList(props) {
 							to={`/${picture.date}`}
 							key={picture.date}
 							className='picture-container'>
-							<img src={picture.media_type === "video" ? picture.thumbnail_url 
-							: picture.url} alt={picture.title} />
+							<img
+								src={
+									picture.media_type === 'video'
+										? picture.thumbnail_url
+										: picture.url
+								}
+								alt={picture.title}
+							/>
 							<p>Picture Date: {picture.date}</p>
 							<p>
 								Photo Credit:{' '}
