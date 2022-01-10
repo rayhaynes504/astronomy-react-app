@@ -5,6 +5,7 @@ function TodayResult({ todayData }) {
 		return <p>Loading Today's Image...</p>;
 	}
 
+	console.log(todayData)
 	return (
 		<div className='today-data-container'>
 			<h2>Today's Image: {todayData.title}</h2>
@@ -12,7 +13,7 @@ function TodayResult({ todayData }) {
 				src={
 					todayData.media_type === 'video'
 						? todayData.thumbnail_url
-						: todayData.url
+						: todayData.hdurl
 				}
 				alt={todayData.title}
 			/>

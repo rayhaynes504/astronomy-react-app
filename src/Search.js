@@ -30,7 +30,7 @@ function Search(props) {
 		//eslint-disable-next-line
 	}, []);
 
-	const todayUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}`;
+	const todayUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&thumbs=True`;
 
 	function fetchTodayData() {
 		fetch(todayUrl)
