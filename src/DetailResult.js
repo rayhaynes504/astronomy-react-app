@@ -34,7 +34,6 @@ function DetailResult(props) {
 
 	return (
 		<div className='detail-result-container'>
-			{console.log(singlePicture)}
 			<h1 className='detail-result-picture-title'>{singlePicture.title}</h1>
 			<img
 				src={
