@@ -5,13 +5,19 @@ import { Link, useParams } from 'react-router-dom';
 // import picturesList from './random-count-data.json';
 
 function ResultsList(props) {
+	const [errorState, setErrorState] = useState(false);
 	const [rangeData, setRangeData] = useState(null);
 	const { endDate, startDate } = useParams();
 	const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}&thumbs=True`;
 
 	function getRangeData() {
 		fetch(dateRangeUrl)
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.status !== 200) {
+					setErrorState(true);
+				}
+				return res.json();
+			})
 			.then((json) => setRangeData(json))
 			.catch(console.error);
 	}
@@ -55,6 +61,9 @@ function ResultsList(props) {
 						</Link>
 					);
 				})}
+				<p style={{ display: errorState ? 'inline' : 'none' }}>
+					Request invalid
+				</p>
 			</div>
 		</>
 	);

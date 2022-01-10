@@ -19,6 +19,7 @@ function Search(props) {
 	} = useContext(FormContext);
 	const navigate = useNavigate();
 	const [todayData, setTodayData] = useState(null);
+	const [errorState, setErrorState] = useState(false);
 
 	useEffect(() => {
 		fetchTodayData();
@@ -34,9 +35,13 @@ function Search(props) {
 
 	function fetchTodayData() {
 		fetch(todayUrl)
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.status !== 200) {
+					setErrorState(true);
+				}
+				return res.json();
+			})
 			.then((json) => {
-				console.log(json);
 				setTodayData(json);
 			})
 			.catch(console.error);
@@ -85,7 +90,7 @@ function Search(props) {
 
 				<button type='submit'>Search!</button>
 			</form>
-			<TodayResult todayData={todayData} />
+			<TodayResult todayData={todayData} errorState={errorState} />
 		</div>
 	);
 }

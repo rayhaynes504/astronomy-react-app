@@ -1,11 +1,11 @@
 import React from 'react';
 
-function TodayResult({ todayData }) {
+function TodayResult({ todayData, errorState }) {
 	if (!todayData) {
 		return <p>Loading Today's Image...</p>;
 	}
 
-	console.log(todayData)
+	
 	return (
 		<div className='today-data-container'>
 			<h2>Today's Image: {todayData.title}</h2>
@@ -29,6 +29,7 @@ function TodayResult({ todayData }) {
 				<h4 className='today-description-header'>Description</h4>
 				<p className='today-description-p'>{todayData.explanation}</p>
 			</div>
+			<p style={{display: errorState ? 'inline': 'none'}}>Request invalid</p>
 		</div>
 	);
 }
