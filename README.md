@@ -2,7 +2,7 @@
 
 ## Description
 
-NASA had been uploading a daily astronomy image or video since 1995. My app displays todays content and allows you to search for a particular image or a range of images by date. Once searched, you can view a high quality image along with more image details and a description giving the significance of the image.
+NASA has been uploading a daily astronomy image or video since 1995. My app displays today's content and allows you to search for a particular image or a range of images by date. Once searched, you can view a high quality image along with more image details and a description giving the significance of the image.
 
 ### App Screenshots
 ![Home Page](assets/homepage-screenshot.png)
@@ -27,14 +27,15 @@ Fork and clone this repo, inputting the below command into your terminal.
 
 After cloning repo, cd into newly created repo and install react dependencies.
 
-`cd astronomy-react-app`
+`$cd astronomy-react-app`
 
-`npm install`
+`$npm install`
 
 After dependencies are installed, open code in your code editor then start a local server with the following terminal commands.
 
-`code .`
-`npm start`
+`$code .`
+
+`$npm start`
 
 React components and styling code are located in the src folder. 
 
