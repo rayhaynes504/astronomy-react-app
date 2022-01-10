@@ -7,8 +7,6 @@ body {
 }
 a {
 	color: inherit;
-	/* text-decoration: inherit; */
-	/* all:unset; */
 }
 /* Nav Component Styling */
 .nav-container {

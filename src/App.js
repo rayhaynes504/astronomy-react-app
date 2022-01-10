@@ -1,5 +1,5 @@
 // Functionality imports
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { FormContext } from './FormContext';
 import './App.css';

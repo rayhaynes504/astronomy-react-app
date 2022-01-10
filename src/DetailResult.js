@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 // import singlePicture from './today-response-data.json';
 
 function DetailResult(props) {
+	const [errorState, setErrorState] = useState(false);
 	const [specificData, setSpecificData] = useState(null);
 	const { date } = useParams();
 
@@ -14,11 +15,15 @@ function DetailResult(props) {
 		//eslint-disable-next-line
 	}, []);
 
-	const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}&thumbs=True`;
-
 	function getSpecificData() {
+		const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}&thumbs=True`;
 		fetch(specificDateUrl)
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.status !== 200) {
+					setErrorState(true);
+				}
+				return res.json();
+			})
 			.then((json) => {
 				setSpecificData(json);
 			})
@@ -57,6 +62,7 @@ function DetailResult(props) {
 			</div>
 			<h4 className='description-header'>Description</h4>
 			<p className='description-p'>{singlePicture.explanation}</p>
+			<p style={{ display: errorState ? 'inline' : 'none' }}>Request invalid</p>
 		</div>
 	);
 }
