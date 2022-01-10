@@ -21,8 +21,6 @@ function ResultsList(props) {
 		//eslint-disable-next-line
 	}, []);
 
-	console.log(rangeData);
-
 	if (!rangeData) return <p>Loading data...</p>;
 
 	// Variable switching from hardcoded data file to API data
@@ -31,6 +29,7 @@ function ResultsList(props) {
 	return (
 		<>
 			<h2 className='results-header'>Results</h2>
+			<p className='results-subtext'>Click result for more details</p>
 			<div className='results-page'>
 				{picturesList.map((picture, index) => {
 					return (

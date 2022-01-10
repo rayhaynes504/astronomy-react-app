@@ -55,6 +55,9 @@ main {
 .results-header {
 	text-align: center;
 }
+.results-subtext {
+	text-align: center;
+}
 .results-page {
 	width: 95%;
 	display: grid;
@@ -70,24 +73,19 @@ main {
 	flex-direction: column;
 	justify-content: space-between;
 	text-decoration: none;
-	
 }
 .picture-container img {
 	width: 100%;
-	
 }
 .results-text-container {
 	display: inline-block;
 	height: absolute 50;
 	flex-direction: column;
 	justify-content: space-between;
-	font-size: .75rem;
-	
-	
+	font-size: 0.75rem;
 }
 .picture-container p {
-	margin: .5rem 0;
-	
+	margin: 0.5rem 0;
 }
 /* Detail Result Component Styling */
 .detail-result-container {
