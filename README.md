@@ -5,7 +5,9 @@
 NASA had been uploading a daily astronomy image or video since 1995. My app displays todays content and allows you to search for a particular image or a range of images by date. Once searched, you can view a high quality image along with more image details and a description giving the significance of the image.
 
 ### App Screenshots
-
+![Home Page](assets/homepage-screenshot.png)
+![Results List](assets/results-list-screenshot.png)
+![Detail Result](assets/detail-result-screenshot.png)
 
 
 ## Technologies Used:
@@ -45,4 +47,3 @@ You can propose improvements through a pull request. Be sure to leave thorough c
 ### Bug fix requests
 
 You can request bug fixes through issues. Be sure to thoroughly describe steps taken to reproduce bug. Also include expected outcome vs actual outcome. Include any error messages.
-
