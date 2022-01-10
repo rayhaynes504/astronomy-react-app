@@ -8,9 +8,9 @@ function ResultsList(props) {
 	const [errorState, setErrorState] = useState(false);
 	const [rangeData, setRangeData] = useState(null);
 	const { endDate, startDate } = useParams();
-	const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}&thumbs=True`;
 
 	function getRangeData() {
+		const dateRangeUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}&thumbs=True`;
 		fetch(dateRangeUrl)
 			.then((res) => {
 				if (res.status !== 200) {
@@ -37,7 +37,7 @@ function ResultsList(props) {
 			<h2 className='results-header'>Results</h2>
 			<p className='results-subtext'>Click result for more details</p>
 			<div className='results-page'>
-				{picturesList.map((picture, index) => {
+				{picturesList.map((picture) => {
 					return (
 						<Link
 							to={`/detailresult/${picture.date}`}

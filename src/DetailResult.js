@@ -15,9 +15,8 @@ function DetailResult(props) {
 		//eslint-disable-next-line
 	}, []);
 
-	const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}&thumbs=True`;
-
 	function getSpecificData() {
+		const specificDateUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}&thumbs=True`;
 		fetch(specificDateUrl)
 			.then((res) => {
 				if (res.status !== 200) {

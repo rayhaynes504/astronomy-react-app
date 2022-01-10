@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormContext } from './FormContext';
+// Component imports
 import TodayResult from './TodayResult';
 
 // Hardcoded data files. Keeping for future updates
@@ -31,9 +32,8 @@ function Search(props) {
 		//eslint-disable-next-line
 	}, []);
 
-	const todayUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&thumbs=True`;
-
 	function fetchTodayData() {
+		const todayUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&thumbs=True`;
 		fetch(todayUrl)
 			.then((res) => {
 				if (res.status !== 200) {
@@ -83,6 +83,7 @@ function Search(props) {
 				<input
 					id='to-date'
 					type='date'
+					min='1995-06-16'
 					onChange={(event) => {
 						setToDateValue(event.target.value);
 					}}
