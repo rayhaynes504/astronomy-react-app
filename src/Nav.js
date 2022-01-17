@@ -7,6 +7,9 @@ function Nav(props) {
 			<Link to={'/'}>
 				<li className='nav-link'>Home</li>
 			</Link>
+			<Link to={'/about'}>
+				<li className='nav-link'>About</li>
+			</Link>
 		</ul>
 	);
 }

@@ -1,5 +1,5 @@
 * {
-	/* border: 1px solid red; */
+	border: 1px solid red;
 	font-family: 'Source Code Pro', monospace;
 }
 body {
@@ -8,15 +8,21 @@ body {
 a {
 	color: inherit;
 }
+a:hover {
+	transform: scale(1.05);
+}
 /* Nav Component Styling */
 .nav-container {
 	list-style: none;
 	display: flex;
-	justify-content: center;
+	flex-direction: row;
+	justify-content: space-between;
 	padding: 0;
+	margin: 1rem 1.25rem;
 }
 .nav-link {
 	font-size: 1.2rem;
+		
 }
 main {
 	margin: 0 auto;
@@ -25,12 +31,17 @@ main {
 .search-container {
 	text-align: center;
 }
+input:hover {
+	background-color: rgba(255, 255, 255, 0.995);
+	cursor: pointer;
+}
 .search-container form p {
 	font-weight: 700;
 }
 .search-container form button {
 	display: block;
 	margin: 1rem auto;
+	border-radius: 0.3rem;
 }
 /* Today Result Component Styling */
 .today-data-container {
