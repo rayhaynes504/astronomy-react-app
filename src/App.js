@@ -8,6 +8,7 @@ import Nav from './Nav';
 import Search from './Search';
 import ResultsList from './ResultsList';
 import DetailResult from './DetailResult';
+import About from './About';
 // Hard coded data imports. Keeping to work on future revisions
 // import singlePicture from './today-response-data.json';
 // import picturesList from './random-count-data.json';
@@ -40,6 +41,7 @@ function App() {
 							element={<ResultsList />}
 						/>
 						<Route path='detailresult/:date' element={<DetailResult />} />
+						
 					</Routes>
 				</FormContext.Provider>
 			</main>
